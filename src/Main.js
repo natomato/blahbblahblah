@@ -2,13 +2,10 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import Bookshelf from './Bookshelf'
 
-const BOOKS = [
-  {
-    cover: 'http://books.google.com/books/content?id=yDtCuFHXbAYC&printsec=frontcover&img=1&zoom=1&imgtk=AFLRE72RRiTR6U5OUg3IY_LpHTL2NztVWAuZYNFE8dUuC0VlYabeyegLzpAnDPeWxE6RHi0C2ehrR9Gv20LH2dtjpbcUcs8YnH5VCCAH0Y2ICaKOTvrZTCObQbsfp4UbDqQyGISCZfGN&source=gbs_api',
-    title: 'Ender\'s Game',
-    authors: 'Orson Scott Card'
-  }
-]
+const READING='Currently Reading'
+const TO_READ='Want to Read'
+const READ='Read'
+const SHELVES=[READING, TO_READ, READ]
 
 export default class Main extends React.Component {
   render () {
@@ -19,7 +16,8 @@ export default class Main extends React.Component {
           </div>
           <div className="list-books-content">
             <div>
-              <Bookshelf />
+              <Bookshelf name={READING} shelves={[READING, TO_READ, READ]}/>
+              <Bookshelf name={TO_READ} shelves={[READING, TO_READ, READ]}/>
               <div className="bookshelf">
                 <h2 className="bookshelf-title">Want to Read</h2>
                 <div className="bookshelf-books">
