@@ -4,7 +4,7 @@ import { SHELVES } from './constants'
 
 export default class Categorizer extends React.Component {
   static defaultProps = {
-    shelf: '',
+    shelf: 'None',
     changeShelf: x => x
   }
 
@@ -20,9 +20,9 @@ export default class Categorizer extends React.Component {
         <select value={this.props.shelf} onChange={this.move}>
           <option value="none" disabled>Move to...</option>
           {
-            SHELVES.map(shelf => <option value={shelf}>{shelf}</option>)
+            SHELVES.map(shelf => <option key={shelf} value={shelf}>{shelf}</option>)
           }
-          <option value="none">None</option>
+          <option value="None">None</option>
         </select>
       </div>
     )

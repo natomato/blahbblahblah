@@ -1,10 +1,15 @@
 import React from 'react'
 import Books from './Books'
-import _ from 'lodash'
+import * as BooksAPI from './BooksAPI'
 
 export default class Bookshelf extends React.Component {
   handleChangeShelf = (title, shelf) => {
     this.props.changeShelf(title, shelf);
+  }
+
+  componentWillMount () {
+    //TODO: get books
+    // BooksAPI.getAll().then((result) => this.setState({collection: result}))
   }
 
   render () {

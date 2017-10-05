@@ -69,8 +69,14 @@ export default class BooksApp extends React.Component {
   render() {
     return (
       <div className="app">
-        <Route exact path='/' render={() => <Main books={this.state.books} changeShelf={this.handleChangeShelf}/>}/>
-        <Route path='/search' component={Search}/>
+        <Route
+          exact path='/'
+          render={() => <Main books={this.state.books} changeShelf={this.handleChangeShelf} />}
+        />
+        <Route
+          path='/search'
+          render={() => <Search changeShelf={this.handleChangeShelf} />}
+        />
       </div>
     )
   }
