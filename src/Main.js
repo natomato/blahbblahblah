@@ -1,11 +1,15 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import Bookshelf from './Bookshelf'
-import { BOOKS, SHELVES } from './constants'
+import { SHELVES } from './constants'
 
 export default class Main extends React.Component {
   getBooksForShelf(name) {
-    return BOOKS.filter(book => book.shelf === name)
+    return this.props.books.filter(book => book.shelf === name)
+  }
+
+  handleChangeShelf = (title, shelf) => {
+    this.props.changeShelf(title, shelf);
   }
 
   render () {
@@ -19,7 +23,12 @@ export default class Main extends React.Component {
             {
               SHELVES.map(shelf => {
                 return (
-                  <Bookshelf key={shelf} name={shelf} books={this.getBooksForShelf(shelf)} />
+                  <Bookshelf
+                    key={shelf}
+                    name={shelf}
+                    books={this.getBooksForShelf(shelf)}
+                    changeShelf={this.handleChangeShelf}
+                  />
                 )
               })
             }
