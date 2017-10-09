@@ -7,18 +7,14 @@ export default class Books extends React.Component {
     changeShelf: x => x
   }
 
-  handleChangeShelf = (title) =>  {
-    return (shelf) => this.props.changeShelf(title, shelf)
-  }
-
   render () {
     return (
       <ol className="books-grid">
         {
           this.props.collection.map((book={}) => {
             return (
-              <li key={book.title}>
-                <Book {...book} changeShelf={this.handleChangeShelf(book.title)}/>
+              <li key={book.id}>
+                <Book {...book} changeShelf={this.props.changeShelf}/>
               </li>
             )
           })
@@ -33,11 +29,13 @@ class Book extends React.Component {
     cover: 'https://books.google.com/books/content?id=Sg32DAAAQBAJ&printsec=frontcover&img=1&zoom=5',
     title: 'none',
     authors: 'unknown',
+    id: '',
+    shelf: 'none',
     changeShelf: x => x,
   }
 
   handleChange = (shelf) => {
-    this.props.changeShelf(shelf)
+    this.props.changeShelf(this.props.id, shelf)
   }
 
   render () {

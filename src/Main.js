@@ -4,12 +4,11 @@ import Bookshelf from './Bookshelf'
 import { SHELVES } from './constants'
 
 export default class Main extends React.Component {
-  getBooksForShelf(name) {
-    return this.props.books.filter(book => book.shelf === name)
+  static defaultProps = {
+    books: []
   }
-
-  handleChangeShelf = (title, shelf) => {
-    this.props.changeShelf(title, shelf);
+  getBooksForShelf(shelf) {
+    return this.props.books.filter(book => book.shelf === shelf)
   }
 
   render () {
@@ -21,13 +20,13 @@ export default class Main extends React.Component {
           <div className="list-books-content">
             <div>
             {
-              SHELVES.map(shelf => {
+              SHELVES.map(({label, value}) => {
                 return (
                   <Bookshelf
-                    key={shelf}
-                    name={shelf}
-                    books={this.getBooksForShelf(shelf)}
-                    changeShelf={this.handleChangeShelf}
+                    key={value}
+                    name={label}
+                    books={this.getBooksForShelf(value)}
+                    changeShelf={this.props.changeShelf}
                   />
                 )
               })

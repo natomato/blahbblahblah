@@ -6,18 +6,18 @@ To run the program: `npm install && npm start`
 ```
 Index
   App
-    [routing, state of all books]
-    passes Books to Main and Search
+    routing
+    owns state of Books
+    calls update and getAll
     Main:
       Bookshelf: list books
         Books: renders each Book
-          Book:
-            Categorizer: move/remove a book
+          Book: adds book.id to changeShelf call
+            Categorizer: calls changeShelf with users selection
     Search:
       Books:
         Book:
           Categorizer:
       [Actions]
         search booksApi
-        update book category 
   ```
